@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Zen Maru Gothic", sans-serif;
+}
+
+@layer base {
+  body {
+    @apply font-sans bg-[#FAF9F6] text-slate-800;
+  }
+}
