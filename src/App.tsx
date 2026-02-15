@@ -46,7 +46,9 @@ function App() {
     const unsubDelivery = onSnapshot(doc(db, "settings", "delivery"), (doc) => {
       if (doc.exists()) {
         const data = doc.data() as DeliveryData;
-        setDeliveryDate(data.next_date.toDate());
+        if (data.next_date) {
+          setDeliveryDate(data.next_date.toDate());
+        }
       }
       setLoading(false);
     }, (error) => {
@@ -136,7 +138,13 @@ function App() {
               のんだ！
             </button>
             <button
-              onClick={() => updateStock('water', 12)}
+              onClick={() => updateStock('water', 1)}
+              className="bg-white text-[#0369A1] px-4 py-2 rounded-full shadow-sm font-bold active:scale-95 transition-transform hover:bg-slate-50 border border-[#0369A1]"
+            >
+              1ぽん
+            </button>
+            <button
+              onClick={() => updateStock('water', 9)}
               className="bg-[#0369A1] text-white px-4 py-2 rounded-full shadow-sm font-bold active:scale-95 transition-transform hover:bg-[#0284c7]"
             >
               とどいた！
@@ -156,6 +164,12 @@ function App() {
               className="bg-white text-[#047857] px-4 py-2 rounded-full shadow-sm font-bold active:scale-95 transition-transform hover:bg-slate-50"
             >
               のんだ！
+            </button>
+            <button
+              onClick={() => updateStock('tea', 1)}
+              className="bg-white text-[#047857] px-4 py-2 rounded-full shadow-sm font-bold active:scale-95 transition-transform hover:bg-slate-50 border border-[#047857]"
+            >
+              1ぽん
             </button>
             <button
               onClick={() => updateStock('tea', 8)}
